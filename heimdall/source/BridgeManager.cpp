@@ -1111,9 +1111,6 @@ bool BridgeManager::SendFile(FILE *file, unsigned int destination, unsigned int 
 
 			if (!success)
 			{
-				Interface::PrintErrorSameLine("\n");
-				Interface::PrintError("Failed to receive file part response!\n");
-
 				if (filePartIndex == 0)
 				{
 					// Hack
@@ -1122,6 +1119,9 @@ bool BridgeManager::SendFile(FILE *file, unsigned int destination, unsigned int 
 				}
 				else
 				{
+					Interface::PrintErrorSameLine("\n");
+					Interface::PrintError("Failed to receive file part response!\n");
+
 					for (int retry = 0; retry < 4; ++retry)
 					{
 						Interface::PrintErrorSameLine("\n");
